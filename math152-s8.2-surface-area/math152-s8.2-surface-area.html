@@ -1,0 +1,1014 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>8.2 Area of a Surface of Revolution</title>
+<!--Generated on Fri Oct  9 21:39:55 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+
+<style>
+/*======================================================================
+ Core CSS for LaTeXML documents converted to (X)HTML */
+/* Generic Page layout */
+.ltx_page_header,
+.ltx_page_footer { font-size:0.8em; }
+.ltx_page_header *[rel~="prev"],
+.ltx_page_footer *[rel~="prev"] { float:left; }
+.ltx_page_header *[rel~="up"],
+.ltx_page_footer *[rel~="up"]   { display:block; text-align:center; }
+.ltx_page_header *[rel~="next"],
+.ltx_page_footer *[rel~="next"] {  float:right; }
+/* What was I trying for here; need more selective rule!
+.ltx_page_header .ltx_ref,
+.ltx_page_footer .ltx_ref {
+    margin:0 1em; }
+*/
+.ltx_page_header li {
+    padding:0.1em 0.2em 0.1em 1em;}
+
+/* Main content */
+.ltx_page_content { clear:both; }
+.ltx_page_header  { border-bottom:1px solid; margin-bottom:5px; }
+.ltx_page_footer  { clear:both; border-top:1px solid; margin-top:5px;  }
+
+.ltx_page_header:after,
+.ltx_page_footer:after,
+.ltx_page_content:after {
+    content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.ltx_page_footer:before {
+    content:"."; display:block; height:0; clear:both; visibility:hidden; }
+
+.ltx_page_logo     { font-size:90%; margin-top: 5px; clear:both; float:right; }
+a.ltx_LaTeXML_logo { text-decoration: none; }
+.ltx_page_logo img { vertical-align:-3px; }
+.ltx_page_navbar .ltx_LaTeXML_logo,
+.ltx_page_logo .ltx_LaTeXML_logo { font-size:110%; }
+/* if shown */
+.ltx_page_navbar li { white-space:nowrap; display:block; overflow:hidden; }
+/* If ref got turned into span, it's "this section"*/
+.ltx_page_navbar li span.ltx_ref { white-space:normal; overflow:visible; }
+
+/* Ought to be easily removable/overridable? */
+.ltx_pagination.ltx_role_newpage { height:2em; }
+/*======================================================================
+  Document Structure; Titles & Frontmatter */
+
+/* undo bold here to remove the browser's native h# styling,
+   at let all other styles override it (with more specific rules)*/
+.ltx_title { font-size:100%; font-weight:normal; }
+
+/* Hack to simulate run-in! put class="ltx_runin" on a title or tag
+   for it to run-into the following text. */
+.ltx_runin { display:inline; }
+.ltx_runin:after { content:" "; }
+.ltx_runin + .ltx_para,
+.ltx_runin + .ltx_para p:first-child,
+.ltx_runin + p:first-child {
+    display:inline; }
+
+.ltx_outdent { margin-left: -2em; }
+
+/* .ltx_chapter_title, etc should be in ltx-article.css etc. */
+.ltx_page_main { margin:0px auto;
+    padding:1em 3em 1em 2em;
+    padding:min(1em,1.5%) min(3em,4.5%) min(1em,1.5%) min(2em, 3%); }
+.ltx_tocentry  { list-style-type:none; }
+
+/* support for common author block layouts.*/
+/* add class ltx_authors_1line to get authors in single line
+   with pop-up affiliation, etc. */
+.ltx_authors_1line .ltx_creator,
+.ltx_authors_1line .ltx_author_before,
+.ltx_authors_1line .ltx_author_after { display:inline;}
+.ltx_authors_1line .ltx_author_notes { display:inline-block; }
+.ltx_authors_1line .ltx_author_notes:before { content:"*"; color:blue;}
+.ltx_authors_1line .ltx_author_notes span { display:none; }
+.ltx_authors_1line .ltx_author_notes:hover span {
+    display:block; position:absolute; z-index:10;
+    background:white; text-align:left;
+    border: 1px solid black; border-radius: 0 5px 5px 5px; box-shadow: 5px 5px 10px gray; }
+
+/* add class=ltx_authors_multiline to get authors & affliations on separate lines*/
+.ltx_authors_multiline .ltx_creator,
+.ltx_authors_multiline .ltx_author_before,
+.ltx_authors_multiline .ltx_author_after,
+.ltx_authors_multiline .ltx_author_notes,
+.ltx_authors_multiline .ltx_author_notes .ltx_contact {
+    display:block; }
+
+/*======================================================================
+  Para level */
+.ltx_float {
+    margin: 1ex clamp(1em, 4.5%, 3em) 1ex clamp(1em, 4.5%, 3em); }
+
+/* Multiple subfigures via flexbox */
+.ltx_flex_figure {
+  display: flex;
+  flex-flow: row wrap;
+  width: auto;
+  max-width: 60rem;
+  position: relative;
+  justify-content: center;
+  align-items: baseline;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.ltx_flex_size_1,
+.ltx_flex_size_1 .ltx_tabular,
+.ltx_flex_size_1 .ltx_graphics {
+  max-width:60rem;
+}
+.ltx_flex_size_2,
+.ltx_flex_size_2 .ltx_tabular,
+.ltx_flex_size_2 .ltx_graphics {
+  max-width: calc(0.44*60rem);
+}
+.ltx_flex_size_3,
+.ltx_flex_size_3 .ltx_tabular,
+.ltx_flex_size_3 .ltx_graphics {
+  max-width: calc(0.30*60rem);
+}
+.ltx_flex_size_4,
+.ltx_flex_size_4 .ltx_tabular,
+.ltx_flex_size_4 .ltx_graphics {
+  max-width: calc(0.24*60rem);
+}
+/*Default: More than 4 items, tricky.
+  quite often intended to auto-reflow... */
+.ltx_flex_size_many,
+.ltx_flex_size_many .ltx_tabular,
+.ltx_flex_size_many .ltx_graphics {
+  max-width: calc(0.24*60rem);
+}
+
+/* flex row breaks */
+.ltx_flex_figure .ltx_flex_break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+/* layout preference */
+.ltx_flex_figure .ltx_subgraphics,
+.ltx_flex_figure .ltx_subfigure,
+.ltx_flex_figure .ltx_subfloat,
+.ltx_flex_figure .ltx_subtable {
+  flex: 1 1 0px;
+  margin: 0.1rem;
+}
+.ltx_subgraphics, .ltx_subfigure, .ltx_subtable, .ltx_subfloat {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.ltx_subgraphics > .ltx_figure,
+.ltx_subfigure > .ltx_figure,
+.ltx_subtable > .ltx_figure,
+.ltx_subfloat > .ltx_figure {
+  margin:0em;
+}
+
+/* theorems, figure, tables, floats captions.. */
+/*======================================================================
+ Blocks, Lists, Floats */
+.ltx_p,
+.ltx_quote,
+.ltx_block,
+.ltx_logical-block,
+.ltx_para {
+    display: block; }
+
+/* alignment within blocks */
+.ltx_align_left     { text-align:left; }
+.ltx_align_right    { text-align:right; }
+.ltx_align_center   { text-align:center; }
+.ltx_align_justify  { text-align:justify; }
+.ltx_align_top      { vertical-align:top; }
+.ltx_align_bottom   { vertical-align:bottom; }
+.ltx_align_middle   { vertical-align:middle; }
+.ltx_align_baseline { vertical-align:baseline; }
+
+.ltx_align_floatleft  { float:left; }
+.ltx_align_floatright { float:right; }
+
+.ltx_td.ltx_align_left,   .ltx_th.ltx_align_left,
+.ltx_td.ltx_align_right,  .ltx_th.ltx_align_right,
+.ltx_td.ltx_align_center, .ltx_th.ltx_align_center { white-space:nowrap; }
+.ltx_td.ltx_align_left.ltx_wrap,   .ltx_th.ltx_align_left.ltx_wrap,
+.ltx_td.ltx_align_right.ltx_wrap,  .ltx_th.ltx_align_right.ltx_wrap,
+.ltx_td.ltx_align_center.ltx_wrap, .ltx_th.ltx_align_center.ltx_wrap,
+.ltx_td.ltx_align_justify,  .ltx_th.ltx_align_justify { white-space:normal; }
+
+.ltx_tabular .ltx_tabular { width:100%; }
+.ltx_inline-block,
+.ltx_inline-logical-block { display:inline-block; }
+
+/* tabbing is always a standalone paragraph-level construct */
+.ltx_tabular.ltx_tabbing { 
+  display: table; }
+
+/* avoid padding when aligning adjacent columns, e.g. for split decimals */
+.ltx_norightpad { padding-right:0!important; }
+.ltx_noleftpad  { padding-left:0!important; }
+.ltx_nopad      { padding:0!important; }
+
+/* equations in non-aligned mode (not normally used) */
+.ltx_eqn_div { display:block; width:95%; text-align:center; }
+
+/* equations in aligned mode (aligning tags, etc as well as equations) */
+.ltx_eqn_table { display:table; width:100%; border-collapse:collapse; }
+.ltx_eqn_row   { display:table-row; }
+.ltx_eqn_cell  { display:table-cell; width:auto; }
+
+/* Padding between column pairs in ams align */
+table.ltx_eqn_align tr.ltx_equation td.ltx_align_left + td.ltx_align_right,
+table.ltx_eqn_align tr.ltx_equation td.ltx_align_left + td.ltx_align_center,
+table.ltx_eqn_align tr.ltx_equation td.ltx_align_center + td.ltx_align_right,
+table.ltx_eqn_align tr.ltx_equation td.ltx_align_center + td.ltx_align_center  { padding-left:3em; }
+table.ltx_eqn_eqnarray tr.ltx_eqn_lefteqn + tr td.ltx_align_right { min-width:2em; }
+
+.ltx_eqn_eqno { max-width:0em; overflow:visible; white-space: nowrap; }
+.ltx_eqn_eqno.ltx_align_right .ltx_tag { float:right; }
+
+.ltx_eqn_center_padleft,
+.ltx_eqn_center_padright { width:50%; min-width:2em;}
+.ltx_eqn_left_padleft,
+.ltx_eqn_right_padright { min-width:2em; }
+.ltx_eqn_left_padright,
+.ltx_eqn_right_padleft  { width:100%; }
+
+/* Various lists */
+.ltx_itemize,
+.ltx_enumerate,
+.ltx_description {
+    display:block; }
+.ltx_itemize .ltx_item,
+.ltx_enumerate .ltx_item {
+    display: list-item; white-space:nowrap; }
+
+/* Position the tag to look like a normal item bullet. */
+li.ltx_item > .ltx_tag {
+    display:inline-block; margin-left:-1.5em; min-width:1.5em;
+    text-align:right; }
+.ltx_item .ltx_tag + .ltx_para {
+    display:inline-block; vertical-align:top;}
+.ltx_item .ltx_tag + .ltx_para .ltx_p  {
+    display:inline; }
+.ltx_item > .ltx_para > .ltx_p:first-child {
+    text-indent:0em; }
+
+.ltx_item > .ltx_para > .ltx_p { margin-top:0em; margin-bottom:0em; }
+dd.ltx_item { margin-bottom:0.5em; }
+
+/* NOTE: Need to try harder to get runin appearance? */
+dl.ltx_description dt { margin-right:0.5em; float:left;
+                        font-weight:bold; font-size:95%; }
+dl.ltx_description dd { margin-left:5em; }
+dl.ltx_description dl.ltx_description dd { margin-left:3em; }
+
+/* Theorems */
+.ltx_theorem  {margin:1em 0em 1em 0em; }
+.ltx_title_theorem { font-size:100%; }
+
+/* Bibliographies */
+.ltx_bibliography dt { margin-right:0.5em; float:left; }
+.ltx_bibliography dd { margin-left: clamp(1em, 4.5%, 3em); }
+/*.ltx_biblist { list-style-type:none; }*/
+.ltx_bibitem { list-style-type:none; }
+.ltx_bibitem .ltx_tag { font-weight:bold; margin-left:-2em; width:3em; }
+/*.bibitem-tag + div { display:inline; }*/
+.ltx_bib_title { font-style:italic; }
+.ltx_bib_article .bib-title { font-style:normal !important; }
+.ltx_bib_journal  { font-style:italic; }
+.ltx_bib_volume { font-weight:bold; }
+
+/* Indices */
+.ltx_indexlist li { list-style-type:none;  }
+.ltx_indexlist { margin-left:1em; padding-left:1em;}
+
+/* Listings */
+.ltx_listing {
+    display:block;
+    margin: 1ex 3em 1ex 0em;
+    overflow-x:auto;
+    text-align: left; }
+.ltx_float .ltx_listing {
+    margin: 0; }
+.ltx_listingline { white-space:nowrap; min-height:1em; }
+.ltx_lst_space { white-space: pre; }
+.ltx_lst_numbers_left .ltx_listingline .ltx_tag {
+    background-color:transparent;
+    margin-left:-3em; width:2.5em;
+    position:absolute;
+    text-align:right; }
+.ltx_lst_numbers_right .ltx_listingline .ltx_tag {
+    background-color:transparent;
+    width:2.5em;
+    position:absolute; right:3em;
+    text-align:right; }
+/*
+    position:absolute; left:0em;
+    max-width:0em; text-align:right; }
+*/
+.ltx_parbox {
+    text-indent:0em;
+    display: inline-block; }
+
+/* NOTE that it is CRITICAL to put position:relative outside & absolute inside!!
+   I wish I understood why!
+   Outer box establishes resulting size, neutralizes any outer positioning, etc;
+   inner establishes position of stuff to be rotated */
+.ltx_transformed_outer {
+    position:relative; bottom:0pt;left:0pt;
+    overflow:visible; }
+.ltx_transformed_inner {
+    display:block;
+    position:absolute;bottom:0pt;left:0pt; }
+.ltx_transformed_inner > .ltx_p {text-indent:0em; margin:0; padding:0; }
+
+/* If simulating a table (html5), try to get rowspan to work...sorta? */
+span.ltx_tabular { position:relative; }
+span.ltx_rowspan { position:absolute; top:0; bottom:0; }
+
+/* by default, p doesn't indent */
+.ltx_p { text-indent:0em; white-space:normal; }
+/* explicit control of indentation (on ltx_para) */
+.ltx_indent > .ltx_p:first-child { text-indent:2em!important; }
+.ltx_noindent > .ltx_p:first-child { text-indent:0em!important; }
+
+/*======================================================================
+  Columns */
+.ltx_page_columns {
+    display: flex; }
+.ltx_page_column1,
+.ltx_page_column2 {
+    flex:100%;
+    margin: 0 20px;
+ }
+@media screen and (max-width: 60em){
+  .ltx_page_columns {
+     flex-direction: column; }
+  .ltx_page_column1 > ul,
+  .ltx_page_column1 > ol,
+  .ltx_page_column1 > dl {
+     margin-bottom: 0; }
+  .ltx_page_column2 > ul,
+  .ltx_page_column2 > ol,
+  .ltx_page_column2 > dl {
+     margin-top: 0; }
+}
+
+/*======================================================================
+ Borders and such */
+.ltx_tabular { display:inline-table; border-collapse:collapse; }
+.ltx_tabular.ltx_centering { display:table; }
+.ltx_thead,
+.ltx_tfoot,
+.ltx_tbody   { display:table-row-group; }
+.ltx_tr      { display:table-row; }
+.ltx_td,
+.ltx_th      { display:table-cell; }
+
+.ltx_tabular .ltx_td,
+.ltx_tabular .ltx_th { padding:0.1em 0.5em; }
+.ltx_tabular .ltx_td.ltx_nopad_l,
+.ltx_tabular .ltx_th.ltx_nopad_l { padding-left:0; }
+.ltx_tabular .ltx_td.ltx_nopad_r,
+.ltx_tabular .ltx_th.ltx_nopad_r { padding-right:0; }
+
+/* min-height does NOT apply to tr! */
+.ltx_tabular .ltx_tr td:first-child::after,
+.ltx_tabular .ltx_tr th:first-child::after {
+   content: "";
+   display: inline-block;
+   vertical-align: top;
+   min-height: 1em;
+}
+
+
+/* regular lines */
+.ltx_border_t  { border-top:1px solid black; }
+.ltx_border_r  { border-right:1px solid black; }
+.ltx_border_b  { border-bottom:1px solid black; }
+.ltx_border_l  { border-left:1px solid black; }
+/* double lines */
+.ltx_border_tt { border-top:3px double black; }
+.ltx_border_rr { border-right:3px double black; }
+.ltx_border_bb { border-bottom:3px double black; }
+.ltx_border_ll { border-left:3px double black; }
+/* Light lines */
+.ltx_border_T  { border-top:1px solid gray; }
+.ltx_border_R  { border-right:1px solid gray; }
+.ltx_border_B  { border-bottom:1px solid gray; }
+.ltx_border_L  { border-left:1px solid gray; }
+/* Framing */
+.ltx_framed    { padding:3pt; }
+span.ltx_framed       { display:inline-block; text-indent:0; } /* avoid padding/margin collapse */
+.ltx_framed_rectangle { border-style:solid; border-width:1px; }
+.ltx_framed_top       { border-top-style:solid; border-top-width:1px; }
+.ltx_framed_left      { border-left-style:solid; border-left-width:1px; }
+.ltx_framed_right     { border-right-style:solid; border-right-width:1px; }
+.ltx_framed_bottom,
+.ltx_framed_underline { border-bottom-style:solid; border-bottom-width:1px; }
+.ltx_framed_topbottom { border-top-style:solid; border-top-width:1px;
+                        border-bottom-style:solid; border-bottom-width:1px; }
+.ltx_framed_leftright { border-left-style:solid; border-left-width:1px;
+                        border-right-style:solid; border-right-width:1px; }
+
+.ltx_rule { vertical-align: bottom; height: 0.4pt; width: 0.4pt; }
+
+/*======================================================================
+ Misc */
+/* .ltx_verbatim*/
+.ltx_verbatim { text-align:left; }
+/*======================================================================
+ Meta stuff, footnotes */
+.ltx_note_content { display:none; }
+/*right:5%;  */
+.ltx_note_content {
+     max-width: 70%; font-size:90%; left:15%;
+     text-align:left;
+     background-color: white;
+     padding: 0.5em 1em 0.5em 1.5em;
+     border: 1px solid black; border-radius: 0 5px 5px 5px; box-shadow: 5px 5px 10px gray; }
+.ltx_note_mark    { color:blue; }
+.ltx_note_type    { font-weight: bold; }
+.ltx_note { display:inline-block; text-indent:0; } /* So we establish containing block */
+.ltx_note_content .ltx_note_mark { position:absolute; left:0.2em; top:-0.1em; }
+.ltx_note:hover .ltx_note_content,
+.ltx_note .ltx_note_content:hover {
+   display:block; position:absolute; z-index:10; }
+.ltx_note.ltx_marginpar_left { display:none; }
+
+.ltx_ERROR        { color:red; }
+.ltx_rdf          { display:none; }
+.ltx_missing      { color:red;}
+.ltx_nounicode    { color:red; }
+.ltx_nodisplay    { display:none; }
+/*======================================================================
+ SVG (pgf/tikz ?) basics */
+
+/* Stuff appearing in svg:foreignObject */
+.ltx_svg_fog foreignObject  { margin:0; padding:0; overflow:visible; }
+.ltx_svg_fog foreignObject > p { margin:0; padding:0; display:block; }
+/*.ltx_svg_fog foreignObject > p { margin:0; padding:0; display:block; white-space:nowrap; }*/
+
+/*======================================================================
+ Low-level Basics */
+/* Note that LaTeX(ML)'s font model doesn't map quite exactly to CSS's */
+/* Font Families => font-family */
+.ltx_font_serif      { font-family: serif; }
+.ltx_font_sansserif  { font-family: sans-serif; }
+.ltx_font_typewriter { font-family: monospace; }
+/* dingbats should be converted to unicode? */
+/* Math font families handled within math: script, symbol, fraktur, blackboard ? */
+/* Font Series => font-weight */
+.ltx_font_bold       { font-weight: bold; }
+.ltx_font_medium     { font-weight: normal; }
+/* Font Shapes => font-style or font-variant */
+.ltx_font_italic     { font-style: italic; font-variant:normal; }
+.ltx_font_upright    { font-style: normal; font-variant:normal; }
+.ltx_font_slanted    { font-style: oblique; font-variant:normal; }
+.ltx_font_smallcaps  { font-variant: small-caps; font-style:normal; }
+.ltx_font_oldstyle   { font-variant-numeric: oldstyle-nums; }
+.ltx_font_mathcaligraphic { font-family: "Lucida Calligraphy", "Zapf Chancery","URW Chancery L"; }
+/* Fallbacks for when content+mathvariant cannot be mapped to Unicode */
+.ltx_mathvariant_italic        { font-style: italic; }
+.ltx_mathvariant_bold          { font-weight: bold; }
+.ltx_mathvariant_bold-italic   { font-style: italic; font-weight: bold; }
+.ltx_mathvariant_sans-serif             { font-family: sans-serif; }
+.ltx_mathvariant-bold-sans-serif        { font-family: sans-serif; font-weight: bold; }
+.ltx_mathvariant-sans-serif-italic      { font-family: sans-serif; font-style: italic; }
+.ltx_mathvariant-bold-sans-serif-italic { font-family: sans-serif; font-style: italic; font-weight: bold; }
+.ltx_mathvariant_monospace     { font-family: monospace; }
+/* Can we say anything generic about double-struck, script or fraktur ? */
+.ltx_mathvariant_double-struck { font-weight: bold; }
+.ltx_mathvariant_script        { font-family: "Lucida Calligraphy", "Zapf Chancery","URW Chancery L", cursive; }
+.ltx_mathvariant_bold-script   { font-family: "Lucida Calligraphy", "Zapf Chancery","URW Chancery L", cursive; font-weight: bold; }
+.ltx_mathvariant-fraktur       { }/* ??? */
+.ltx_mathvariant_bold-fraktur  { font-weight: bold; }
+
+/*
+
+.ltx_font_mathscript { ? }
+*/
+cite                 { font-style: normal; }
+
+.ltx_red        { color:red; }
+/*.ltx_centering  { text-align:center; margin:auto; }*/
+/*.ltx_inline-block.ltx_centering,*/
+/* Hmm.... is this right in general? */
+.ltx_centering  { display:block; margin:auto; text-align:center; }
+
+/* Dubious stuff */
+.ltx_hflipped {
+    display:inline-block;
+    transform: scaleX(-1); }
+.ltx_vflipped {
+    display:inline-block;
+    transform: scaleY(-1); }
+
+/* .ltx_phantom handled in xslt */
+
+.ltx_minipage {
+  align-self: normal;
+  display: inline-block;
+}
+.ltx_minipage > .ltx_graphics {
+  max-width:100%;
+}
+
+</style>
+<style>
+
+.ltx_title_document      { font-size:170%; text-align:center; margin:0.5em 0 0.5em 0; }
+.ltx_dates,
+.ltx_authors,
+.ltx_role_author         { text-align:center; margin:0.5em 0 0.5em 0; }
+.ltx_role_author .ltx_personname  { font-size: 120%; }
+.ltx_date        { text-align:center; font-size: 120%; margin:0.5em 0 0.5em 0; }
+.ltx_subtitle    { text-align:center; font-size: 120%; padding-left:0.2em; margin-left:-0.5em; }
+
+.ltx_title_abstract      { text-align:center; font-size: 100%; font-weight:bold; }
+.ltx_abstract {
+   margin-left:clamp(1em, 6%, 4em);
+   margin-right:clamp(1em, 6%, 4em); }
+.ltx_title_acknowledgements,
+.ltx_title_keywords,
+.ltx_title_classification {
+   text-align:left; font-size: 100%; font-weight:bold; margin:0.5em 0 0 0; }
+
+.ltx_appendix,
+.ltx_part,
+.ltx_section,
+.ltx_subsection,
+.ltx_subsubsection { margin-top:1.5em; }
+.ltx_paragraph,
+.ltx_subparagraph   { margin-top:1.0em; }
+
+.ltx_title_part          { font-size:250%; font-weight:bold; margin-bottom:1em; }
+.ltx_title_appendix,
+.ltx_title_section,
+.ltx_title_index,
+.ltx_title_glossary,
+.ltx_title_bibliography  { font-size:140%; font-weight:bold; margin-bottom:1em; }
+.ltx_title_subsection    { font-size:120%; font-weight:bold; margin-bottom:1em; }
+.ltx_title_subsubsection { font-size:100%; font-weight:bold; margin-bottom:1em; }
+
+/* Paragraph & Subparagraph titles should be runin! */
+.ltx_title_paragraph   { font-size:100%; font-weight:bold; display:inline; 
+                         margin-right:1em; }
+.ltx_paragraph .ltx_title,
+.ltx_paragraph .ltx_title + .ltx_para,
+.ltx_paragraph .ltx_title + .ltx_para > .ltx_p { display:inline; }
+
+.ltx_title_subparagraph  { font-size:100%; font-weight:bold; display:inline; 
+                           margin-left:2em; margin-right:1em; }
+.ltx_subparagraph .ltx_title,
+.ltx_subparagraph .ltx_title + .ltx_para,
+.ltx_subparagraph .ltx_title + .ltx_para > .ltx_p { display:inline; }
+
+.ltx_figure  { text-align:center; margin:auto; margin:0.5em; }
+.ltx_table   { text-align:center; margin:auto; margin:0.5em; }
+
+/* experimental: flex model, to center short captions, justify long ones */
+.ltx_table,
+.ltx_figure { display:flex; flex-direction:column; align-items:center; }
+.ltx_table .ltx_caption,
+.ltx_figure .ltx_caption { text-align:justify; }
+
+/* first p in para gets indented; , even 1st in section if marked "no" first child */
+.ltx_para > .ltx_p:first-child,
+section.ltx_pruned_first > .ltx_title + .ltx_para > .ltx_p,
+section.ltx_indent_first > .ltx_title + .ltx_para > .ltx_p { text-indent:2em; }
+/* except the initial in a section */
+section > .ltx_title +.ltx_para > .ltx_p,
+section > .ltx_title +.ltx_date +.ltx_para > .ltx_p {text-indent:0em; }
+
+.ltx_title_abstract + .ltx_p {text-indent:2em; }
+
+.ltx_itemize,
+.ltx_enumerate { margin-left:1em; }
+
+.ltx_theorem { margin-top:0.5em; margin-bottom:0.5em; }
+.ltx_theorem .ltx_title { margin-bottom:0.1em; }
+.ltx_theorem .ltx_title + .ltx_para,
+.ltx_theorem .ltx_title + .ltx_para .ltx_p,
+.ltx_theorem .ltx_title + .ltx_p  { margin-top:0em; }
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+/* --- UMBC styles for LaTeXML output ---
+   A port of umbc_style.css to the class names LaTeXML generates.
+   Use:  latexmlc notes.tex --dest=notes.html --css=umbc-latexml.css
+   It loads after LaTeXML's own stylesheets, so these rules win.        */
+
+:root {
+    --umbc-gold: #ffc20e;
+    --umbc-black: #000000;
+    --umbc-blue: #002d72;
+    --light-gray: #f4f4f4;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #333;
+    background-color: #fff;
+}
+
+/* --- Document title (\title) --- */
+h1.ltx_title_document {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+    font-size: 2rem;
+    color: var(--umbc-black);
+    font-weight: bold;
+}
+
+/* --- Section titles (\section): gold bar --- */
+h2.ltx_title_section {
+    background-color: var(--umbc-gold);
+    color: var(--umbc-black);
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+/* --- Subsection titles (\subsection): blue with gold rule --- */
+h3.ltx_title_subsection {
+    color: var(--umbc-blue);
+    border-bottom: 2px solid var(--umbc-gold);
+    font-size: 1.15rem;
+    padding-bottom: 5px;
+    margin-top: 1.75rem;
+}
+
+/* --- Problems (\begin{problem}) --- */
+.ltx_theorem_problem {
+    margin-bottom: 1.5em;
+}
+.ltx_title_theorem {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--umbc-blue);
+    margin: 0;
+}
+
+/* --- Lists --- */
+.ltx_itemize, .ltx_enumerate {
+    padding-left: 30px;
+    margin: 15px 0;
+}
+.ltx_item {
+    margin-bottom: 0.4em;
+}
+
+/* --- Math: slightly larger so fractions stay legible --- */
+math {
+    font-size: 1.1em;
+}
+
+/* --- Figures (\includegraphics) --- */
+img.ltx_graphics {
+    /* Ignore the fixed size from LaTeX (width=3in): show the picture at its
+       own size, but never wider than the text column. */
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background: white;
+    box-sizing: border-box;
+}
+.ltx_caption {
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* --- Tables (\begin{tabular}) --- */
+.ltx_tabular {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+.ltx_tabular .ltx_td, .ltx_tabular .ltx_th {
+    border: 1px solid #000;
+    padding: 10px 24px;
+    text-align: center;
+}
+
+/* --- Links: keep a visible keyboard focus --- */
+a:focus-visible {
+    outline: 3px solid var(--umbc-blue);
+    outline-offset: 2px;
+}
+
+/* --- Hide the "Generated on ... by LaTeXML" footer --- */
+.ltx_page_footer {
+    display: none;
+}
+
+/* --- Small screens --- */
+@media (max-width: 600px) {
+    body { margin: 20px auto; }
+    h2.ltx_title_section { font-size: 1.25rem; }
+}
+
+/* --- Print --- */
+@media print {
+    body {
+        background-color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    h2.ltx_title_section {
+        border: 1px solid #000;
+        break-after: avoid;
+    }
+    .ltx_theorem_problem, img.ltx_graphics {
+        break-inside: avoid;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_fleqn ltx_leqno">
+<h1 class="ltx_title ltx_font_bold ltx_title_document">8.2 Area of a Surface of Revolution</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+</span></span>
+</div>
+
+<section id="Sx1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">Surface Area</h2>
+
+<div id="Sx1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Rotating a curve about a line, we obtain a surface of revolution. To find the area of this surface, we slice it into frustum bands, each has the area <math id="Sx1.p1.m1" class="ltx_Math" alttext="2\pi\frac{r_{1}+r_{2}}{2}L" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mfrac><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><mn>2</mn></mfrac><mo>⁢</mo><mi>L</mi></mrow></math>, where <math id="Sx1.p1.m2" class="ltx_Math" alttext="r_{1},r_{2}" display="inline"><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub></mrow></math> are the lower and upper radii and <math id="Sx1.p1.m3" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> is the slant height.</p>
+</div>
+<div id="Sx1.p2" class="ltx_para">
+<img src="data:image/png;base64,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" id="Sx1.g1" class="ltx_graphics ltx_centering ltx_img_square" width="299" height="272" alt="Graph of a curve y = f(x) above the x-axis. Between two nearby points on the x-axis, a distance Delta x apart, the curve is replaced by a straight segment joining the heights f(x sub i minus 1) and f(x sub i). Rotating that segment about the x-axis sweeps out a shaded frustum band, a slice of a cone with circular ends of radius f(x sub i minus 1) and f(x sub i).">
+</div>
+<div id="Sx1.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">Compute the area of one band:</p>
+<table id="Sx1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex1.m1" class="ltx_Math" alttext="2\pi\underbrace{f(x_{i}^{**})}_{\text{by IVT}}\,\underbrace{\sqrt{1+\left[f^{%
+\prime}(x_{i}^{*})\right]^{2}}\,\Delta x}_{L}" display="block"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><munder><munder accentunder="true"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>x</mi><mi>i</mi><mrow><mi></mi><mo lspace="0.222em" rspace="0em">∗</mo><mo lspace="0em">∗</mo></mrow></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>⏟</mo></munder><mtext>by IVT</mtext></munder><mo>⁢</mo><munder><munder accentunder="true"><mrow><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mrow><mo>[</mo><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>x</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>x</mi></mrow><mo>⏟</mo></munder><mi>L</mi></munder></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx1.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p">Add up the bands and take the limit to find the surface area:</p>
+</div>
+<div id="Sx1.p5" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Rotate around the <math id="Sx1.p5.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis.</span></p>
+<table id="Sx1.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex2.m1" class="ltx_Math" alttext="S=\displaystyle\lim_{n\to\infty}\sum_{i=1}^{n}2\pi f(x_{i}^{**})\sqrt{1+\left[%
+f^{\prime}(x_{i}^{*})\right]^{2}}\,\Delta x=\int_{a}^{b}2\pi f(x)\sqrt{1+\left%
+[f^{\prime}(x)\right]^{2}}\,dx" display="block"><mrow><mi>S</mi><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>x</mi><mi>i</mi><mrow><mi></mi><mo lspace="0.222em" rspace="0em">∗</mo><mo lspace="0em">∗</mo></mrow></msubsup><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mrow><mo>[</mo><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>x</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>x</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mrow><mo>[</mo><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx1.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Rotate around the <math id="Sx1.p6.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-axis.</span></p>
+<table id="Sx1.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex3.m1" class="ltx_Math" alttext="S=\int_{c}^{d}2\pi g(y)\sqrt{1+\left[g^{\prime}(y)\right]^{2}}\,dy" display="block"><mrow><mi>S</mi><mo rspace="0.111em">=</mo><mrow><msubsup><mo>∫</mo><mi>c</mi><mi>d</mi></msubsup><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mrow><mo>[</mo><mrow><msup><mi>g</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>y</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx1.p7" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">In general:</span></p>
+<table id="Sx1.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex4.m1" class="ltx_Math" alttext="S=\int 2\pi r\,ds" display="block"><mrow><mi>S</mi><mo rspace="0.111em">=</mo><mrow><mo>∫</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>r</mi><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>s</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx1.E1" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Sx1.E1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Sx1.E1.p1.m1" class="ltx_Math" alttext="f(x)=\sqrt{x}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow></math> on <math id="Sx1.E1.p1.m2" class="ltx_Math" alttext="[1,4]" display="inline"><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow></math>. Find the surface area of the surface generated by revolving the graph of <math id="Sx1.E1.p1.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> about the <math id="Sx1.E1.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis.</p>
+</div>
+</div>
+<div id="Sx1.p8" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Solution.</span></p>
+<table id="Sx1.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex5.m1" class="ltx_Math" alttext="f^{\prime}(x)=\frac{1}{2\sqrt{x}}" display="block"><mrow><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><msqrt><mi>x</mi></msqrt></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+<table id="Sx2.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Sx1.Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Sx1.Ex6.m1" class="ltx_Math" alttext="\displaystyle S" display="inline"><mi>S</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex6.m2" class="ltx_Math" alttext="\displaystyle=\int_{1}^{4}2\pi\sqrt{x}\,\sqrt{1+\frac{1}{4x}}\,dx" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mn>1</mn><mn>4</mn></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msqrt><mi>x</mi></msqrt><mo lspace="0.170em">⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi></mrow></mfrac></mstyle></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex7.m1" class="ltx_Math" alttext="\displaystyle=\int_{1}^{4}2\pi\sqrt{x+\frac{1}{4}}\,dx" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mn>1</mn><mn>4</mn></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex8.m1" class="ltx_Math" alttext="\displaystyle=2\pi\cdot\frac{2}{3}\left(x+\frac{1}{4}\right)^{\frac{3}{2}}%
+\Bigg{|}_{1}^{4}" display="inline"><mrow><mi></mi><mo>=</mo><msubsup><mrow><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac><mn>2</mn><mn>3</mn></mfrac></mstyle></mrow><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><mi>x</mi><mo>+</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>4</mn></mfrac></mstyle></mrow><mo>)</mo></mrow><mfrac><mn>3</mn><mn>2</mn></mfrac></msup></mrow><mo maxsize="260%" minsize="260%">|</mo></mrow><mn>1</mn><mn>4</mn></msubsup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex9.m1" class="ltx_Math" alttext="\displaystyle=\frac{\pi}{6}\left(17\sqrt{17}-5\sqrt{5}\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mi>π</mi><mn>6</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mn>17</mn><mo>⁢</mo><msqrt><mn>17</mn></msqrt></mrow><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><msqrt><mn>5</mn></msqrt></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx1.E2" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Sx1.E2.p1" class="ltx_para">
+<p class="ltx_p">Consider <math id="Sx1.E2.p1.m1" class="ltx_Math" alttext="y=\sqrt[3]{3x}" display="inline"><mrow><mi>y</mi><mo>=</mo><mroot><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow><mn>3</mn></mroot></mrow></math> for <math id="Sx1.E2.p1.m2" class="ltx_Math" alttext="0\leq y\leq 2" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mn>2</mn></mrow></math>. Find the surface area of the surface generated by revolving the graph of <math id="Sx1.E2.p1.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> about the <math id="Sx1.E2.p1.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-axis.</p>
+</div>
+</div>
+<div id="Sx1.p9" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Solution.</span></p>
+<table id="Sx1.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex10.m1" class="ltx_Math" alttext="y^{3}=3x,\qquad x=\frac{y^{3}}{3},\qquad\frac{dx}{dy}=y^{2}" display="block"><mrow><mrow><msup><mi>y</mi><mn>3</mn></msup><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>x</mi><mo>=</mo><mfrac><msup><mi>y</mi><mn>3</mn></msup><mn>3</mn></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mfrac><mrow><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mfrac><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+<table id="Sx2.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Sx1.Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Sx1.Ex11.m1" class="ltx_Math" alttext="\displaystyle S" display="inline"><mi>S</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex11.m2" class="ltx_Math" alttext="\displaystyle=\int_{0}^{2}2\pi\,\frac{y^{3}}{3}\sqrt{1+y^{4}}\,dy" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mn>0</mn><mn>2</mn></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo lspace="0.170em">⁢</mo><mstyle displaystyle="true"><mfrac><msup><mi>y</mi><mn>3</mn></msup><mn>3</mn></mfrac></mstyle><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mi>y</mi><mn>4</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>y</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex12.m1" class="ltx_Math" alttext="\displaystyle=\int_{0}^{2}\frac{\pi}{6}\,4y^{3}\sqrt{1+y^{4}}\,dy" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mn>0</mn><mn>2</mn></msubsup></mstyle><mrow><mstyle displaystyle="true"><mfrac><mi>π</mi><mn>6</mn></mfrac></mstyle><mo>⁢</mo><mn> 4</mn><mo>⁢</mo><msup><mi>y</mi><mn>3</mn></msup><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mi>y</mi><mn>4</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>y</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex13.m1" class="ltx_Math" alttext="\displaystyle=\frac{\pi}{6}\cdot\frac{2}{3}\left(1+y^{4}\right)^{\frac{3}{2}}%
+\Bigg{|}_{0}^{2}" display="inline"><mrow><mi></mi><mo>=</mo><msubsup><mrow><mrow><mrow><mstyle displaystyle="true"><mfrac><mi>π</mi><mn>6</mn></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac><mn>2</mn><mn>3</mn></mfrac></mstyle></mrow><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><msup><mi>y</mi><mn>4</mn></msup></mrow><mo>)</mo></mrow><mfrac><mn>3</mn><mn>2</mn></mfrac></msup></mrow><mo maxsize="260%" minsize="260%">|</mo></mrow><mn>0</mn><mn>2</mn></msubsup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex14.m1" class="ltx_Math" alttext="\displaystyle=\frac{\pi}{9}\left(17^{\frac{3}{2}}-1\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mi>π</mi><mn>9</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo>(</mo><mrow><msup><mn>17</mn><mfrac><mn>3</mn><mn>2</mn></mfrac></msup><mo>−</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx1.E3" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Sx1.E3.p1" class="ltx_para">
+<p class="ltx_p">The curve <math id="Sx1.E3.p1.m1" class="ltx_Math" alttext="y=\sqrt{4-x^{2}}" display="inline"><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>, <math id="Sx1.E3.p1.m2" class="ltx_Math" alttext="-1\leq x\leq 1" display="inline"><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></math>, is an arc of the circle <math id="Sx1.E3.p1.m3" class="ltx_Math" alttext="x^{2}+y^{2}=4" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>4</mn></mrow></math>. Find the area of the surface obtained by rotating this arc about the <math id="Sx1.E3.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis.</p>
+</div>
+</div>
+<div id="Sx1.p10" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Solution.</span></p>
+<table id="Sx1.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx1.Ex15.m1" class="ltx_Math" alttext="y^{\prime}=\frac{-2x}{2\sqrt{4-x^{2}}}=\frac{-x}{\sqrt{4-x^{2}}}" display="block"><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>=</mo><mfrac><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mrow><mn>2</mn><mo>⁢</mo><msqrt><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>−</mo><mi>x</mi></mrow><msqrt><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+<table id="Sx2.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Sx1.Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Sx1.Ex16.m1" class="ltx_Math" alttext="\displaystyle S" display="inline"><mi>S</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex16.m2" class="ltx_Math" alttext="\displaystyle=\int_{-1}^{1}2\pi\sqrt{4-x^{2}}\,\sqrt{1+\frac{x^{2}}{4-x^{2}}}%
+\,dx" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mrow><mo>−</mo><mn>1</mn></mrow><mn>1</mn></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msqrt><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mstyle displaystyle="true"><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mstyle></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex17.m1" class="ltx_Math" alttext="\displaystyle=\int_{-1}^{1}2\pi\sqrt{4-x^{2}+x^{2}}\,dx" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mrow><mo>−</mo><mn>1</mn></mrow><mn>1</mn></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msqrt><mrow><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex18.m1" class="ltx_Math" alttext="\displaystyle=\int_{-1}^{1}4\pi\,dx" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mrow><mo>−</mo><mn>1</mn></mrow><mn>1</mn></msubsup></mstyle><mrow><mn>4</mn><mo>⁢</mo><mi>π</mi><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx1.Ex19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx1.Ex19.m1" class="ltx_Math" alttext="\displaystyle=8\pi" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>8</mn><mo>⁢</mo><mi>π</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</section>
+<section id="Sx2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">Review</h2>
+
+<div id="Sx2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Area between curves:</span></p>
+<table id="Sx2.EGx4" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Sx2.Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx2.Ex20.m1" class="ltx_Math" alttext="\displaystyle\int_{a}^{b}f(x)-g(x)\,dx" display="inline"><mrow><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup></mstyle><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>−</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.170em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx2.Ex20.m2" class="ltx_Math" alttext="\displaystyle\text{top}-\text{bottom}" display="inline"><mrow><mtext>top</mtext><mo>−</mo><mtext>bottom</mtext></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx2.Ex21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx2.Ex21.m1" class="ltx_Math" alttext="\displaystyle\int_{c}^{d}f(y)-g(y)\,dy" display="inline"><mrow><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mi>c</mi><mi>d</mi></msubsup></mstyle><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>−</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.170em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx2.Ex21.m2" class="ltx_Math" alttext="\displaystyle\text{right}-\text{left}" display="inline"><mrow><mtext>right</mtext><mo>−</mo><mtext>left</mtext></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx2.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Volume:</span></p>
+<table id="Sx2.EGx5" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Sx2.Ex22"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><span class="ltx_text ltx_markedasmath">Disk/washer:</span></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx2.Ex22.m2" class="ltx_Math" alttext="\displaystyle\int_{a}^{b}\pi\left(R^{2}-r^{2}\right)dx" display="inline"><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup></mstyle><mrow><mi>π</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo>)</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><span class="ltx_text ltx_markedasmath">rotation around the <math id="Sx2.Ex22.m3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis</span></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+<tbody id="Sx2.Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><span class="ltx_text ltx_markedasmath">Shell:</span></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Sx2.Ex23.m2" class="ltx_Math" alttext="\displaystyle\int_{a}^{b}2\pi xf(x)\,dx" display="inline"><mrow><mstyle displaystyle="true"><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><span class="ltx_text ltx_markedasmath">rotation around the <math id="Sx2.Ex23.m3.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-axis</span></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="Sx2.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Average value:</span></p>
+<table id="Sx2.Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math id="Sx2.Ex24.m1" class="ltx_Math" alttext="f_{\text{avg}}=\frac{1}{b-a}\int_{a}^{b}f(x)\,dx" display="block"><mrow><msub><mi>f</mi><mtext>avg</mtext></msub><mo>=</mo><mrow><mfrac><mn>1</mn><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>⁢</mo><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.170em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Fri Oct  9 21:39:55 2026 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>
